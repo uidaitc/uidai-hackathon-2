@@ -1,0 +1,91 @@
+**Before you actually read this I wanna let you know that this is my point of view of the project and I'm always open to your opinions :)**
+
+1)
+We can't use our official aadhar numbers, so they have provided us with a sandbox aadhar number for our team in particular 
+UID:999983099986
+PhNo:9959903059
+
+2)
+The requests for these apis must be in XML format and not JSON (so this is one problem we are gonna have to deal with)
+
+3)
+They have provided source codes using java springboot for using the apis, which i personally don't prefer but i leave the 
+choice to the team, since we can use these codes directly
+
+4)
+We have access to landlord resident location data through apis
+
+5)
+Please do go through the project requirements in the problem statement provided in the pdf
+
+6)
+Here is the flow of the application i think we can pull it off:-
+
+	1) there are 2 users in this sytem:
+		1)the adress borrower = B
+		2)the address lender = L
+
+	2) both the users will be using the same application
+
+	3) first B will be sending the request for the address to L
+
+	4) since we will be working on a web app mostly, we wont have to be notifying L in real time about the request
+	   i.e. we dont have to notify L about the request when he/she is not using the application
+
+	5) so we will be having a database structure in such a way that the requests will be stored in L's account.
+	
+	6) so when L logs into his account, it will just be a simple database query to check for requests from a particular 
+	   B.
+
+	7) now L will have an option to either accept the address req or reject it, if it is accepted the B should be able to 
+	   view L's address. If L rejects it a notification should be sent to the B responding with the same message
+
+this is the basic flow of the application
+
+7) 
+This is for the front-end team in particular:
+	
+	1) As you can see there is no need to create a different applications for lenders and borrowers, since there are places 
+	   when the borrower becomes the lender and the lender becomes a borrower.
+
+	2) the basic login authentication is going to be the aadhaar number in our case our team's staging uid. An otp is going to 
+	   be sent and an otp will be sent and the otp should be verified for the login
+	
+	3) after login there should be an option to check for requests for addresses and the home page should be should show status
+	   of requests sent (this is the UI for solving this particular problem statement, if you guys have any better ideas I'm 
+	   all ears)
+
+	4) so the requirements need us to let the borrower edit the adress a little, but not too much, I will leave this to your
+	   creativity until I think of something else :)
+	
+	5) once accepted by the lender the borrower must be able to access the address and use it for proof of address for a 
+	   particular location.
+
+8) 
+This is for the backend team:
+
+	1) top priority: learn how to use XML format requests just for the sake of our application XD
+	
+	2) I also request the team to read the api documemtations given in the uidai contest website 
+
+	3) I have gone through a few i.e the UIDAuthVidServiceInboundSms API, OTP API, Auth API, so I can be working with the login
+	   of the application.
+
+	4) I also feel like there must be a session timeout for the request that is being sent to the lender
+
+	5) We can work with the apis later as we develop the application and I think there are a lot of flaws in what I planned so 
+	   and can only be seen when we are implementing the application part
+
+	6) I personally feel that MongoDB is a great database to work with in this project, although a graph databases or SQL
+	   seem very tempting, I feel like the aggregation tools in MongoDB is going to be great tool and will help us to build our
+	   aggregation skills.(As explained before, this is my view of the project, feel free to gve your inputs)
+	
+9)Finally, this hackathon is more about learning, not winning. I believe in all of us and if you've got any problems feel free to
+  them with me or anyone else on the team and I'm sure everyone here will be open to help. And also this is not the final draft of
+  there maybe additions to it as we go so feel free to go crazy as creativity in programming has no limits. So lets just have a 
+  great time bonding as a team who are fortunately really good friends aswell. 
+
+  
+
+  Feel the fear and do it anyway.
+  -Susan Jeffers
