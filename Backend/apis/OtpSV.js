@@ -19,15 +19,11 @@ OtpSVRoute.post('/send',(req,res)=>{
     console.log(reqBody);
     axios.post(url,reqBody)
         .then(body=>{
-            if(body.status.status=="Y"){
-                res.send('Otp Sent');
-            }
-            else{
-                res.send('please enter valid aadhar number!')
-            }
+            console.log(body.data)
+            res.send('sent')
         })
         .catch(err=>{
-            res.send('there was some error please try again later');
+            console.log(err);
         })
 })
 
@@ -42,15 +38,11 @@ OtpSVRoute.post('/verify',(req,res)=>{
     url='https://stage1.uidai.gov.in/onlineekyc/getAuth/'
     axios.post(url,reqBody)
         .then(body=>{
-            if(body.data.status=='y'){
-                res.send('otp verified successfully');
-            }
-            else{
-                res.send('otp verification failed!')
-            }
+            console.log(body.data);
+            res.send('authorized');
         })
         .catch(err=>{
-            res.send('there was some error please try again later');
+            console.log(err);
         })
 })
 
