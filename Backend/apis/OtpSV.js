@@ -19,7 +19,7 @@ OtpSVRoute.post('/send',(req,res)=>{
     console.log(reqBody);
     axios.post(url,reqBody)
         .then(body=>{
-            if(body.status.status=="Y"){
+            if(body.data.status=="Y"){
                 res.send('Otp Sent');
             }
             else{
