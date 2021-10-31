@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-xl-4 col-md-2 col-sm-1"></div>
+        <div class="col-xl-4 col-md-8 col-sm-10 border border-rounded p-0 bg-light">
+            <h5 class="bg-primary text-light text-center py-3">Sign-In</h5>
+            <form [formGroup]="SigninForm" (ngSubmit)="onSubmit()" class="mx-3 my-2">
+                <div class="form-group mt-3">
+                    <label for="uid" class="fw-bold mb-2">Aadhar No:</label>
+                    <input type="text" class="form-control mt-1" id="uid" formControlName = "uid" [ngClass]="{'is-invalid':!SigninForm.get('uid')?.valid && (formSubmitted || SigninForm.get('uid')?.touched)}" [readonly]="showOTPFeild">
+                </div>
+                <div *ngIf="!SigninForm.get('uid')?.valid && (formSubmitted || SigninForm.get('uid')?.touched) || this.inValidAadhar" class="feedback mt-2">
+                    *Invalid Aadhar Number
+                 </div>                 
+                <div class="text-center mt-3">
+                    <input type="submit" value="Generate OTP" class="btn btn-success mb-3" *ngIf="!showOTPFeild">
+                </div>
+            </form>
+            <div class="otp-feild mx-3 mt-3" *ngIf="showOTPFeild">
+                <p class="fw-bold">Enter OTP:</p>
+                <div class="d-flex justify-content-center">
+                    <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:6}"></ng-otp-input>
+                </div>
+                <div *ngIf="inValidOTP" class="feedback mt-2">
+                    *Invalid OTP please check
+                </div>
+                
+            </div>         
+            <div class="text-center mt-3">
+                <button class="btn btn-success mb-3" *ngIf="showOTPFeild" (click)="verifyOTP()">Verify OTP</button>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-2 col-sm-1"></div>
+    </div>
+</div>
