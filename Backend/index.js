@@ -21,6 +21,7 @@ app.use(cors({
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 const OtpSV=require('./apis/OtpSV')
+const generateCaptcha=require('./apis/generateCaptcha')
 
 const dburl='mongodb://localhost:27017/aadhar'
 
@@ -36,5 +37,6 @@ mongoose.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true})
     })
 
 app.use('/otp',OtpSV);
+app.use('/ekyc',generateCaptcha)
 
 app.listen(3000,()=>{console.log('listening to port 3000');})
