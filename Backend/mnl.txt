@@ -1,0 +1,54 @@
+const xml2js=require('xml2json');
+
+function groupChildren(obj) {
+    for(prop in obj){
+        if(typeof obj[prop] == 'object'){
+            groupChildren(obj[prop])
+        }
+        else{
+            obj['$']=obj['$'] || {}
+            obj['$'][prop]=obj[prop]
+            delete obj[prop]
+        }
+    } 
+    return obj
+}
+
+// var obj = {
+//     // Level1: {
+//     //   attribute: 'value',
+//     //   Level2: {
+//     //     attribute1: '05/29/2020',
+//     //     attribute2: '10',
+//     //     attribute3: 'Pizza'
+//     //     }
+//     // }
+//     '?xml':{
+//         version:'1.0',
+//         encoding:'UTF-8',
+//         standalone:'yes',
+//     },
+//     VidGenerationServiceInboundRequest:{
+//         uid:'999983099986',
+//         clientType:'6',
+//         mobile:'9959903059',
+//         ver:'1.0',
+//         ts:'2021-10-15T18:58:52',
+//         fetchType:'0',
+//         xmlns:'http://www.uidai.gov.in/vidgeneratorservice/vid-generator-inboundsms/1.0'
+//     }
+// }
+
+var xml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?> <VidGenerationServiceInboundRequest uid="999983099986" clientType="6" mobile="9959903059" ver="1.0" ts="2021-10-15T18:58:52" fetchType="0" xmlns="http://www.uidai.gov.in/vidgeneratorservice/vid-generator-inboundsms/1.0"/>'
+
+var json=xml2js.toJson(xml)
+
+console.log(json);
+
+// {"VidGenerationServiceInboundRequest":{"uid":"999983099986","clientType":"6","mobile":"9959903059","ver":"1.0","ts":"2021-10-15T18:58:52","fetchType":"0","xmlns":"http://www.uidai.gov.in/vidgeneratorservice/vid-generator-inboundsms/1.0"}}
+
+var obj={"VidGenerationServiceInboundRequest":{"uid":"999983099986","clientType":"6","mobile":"9959903059","ver":"1.0","ts":"2021-10-15T18:58:52","fetchType":"0","xmlns":"http://www.uidai.gov.in/vidgeneratorservice/vid-generator-inboundsms/1.0"}}
+
+var xml=xml2js.toXml(obj);
+
+console.log(xml);

@@ -1,0 +1,27 @@
+{
+  "name": "UIDAI-Aadhar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chilkat/ck-node11-win-ia32": "^9.50.88",
+    "axios": "^0.24.0",
+    "base64-to-image": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14",
+    "unzipper": "^0.10.11",
+    "uuid": "^8.3.2",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.4.23",
+    "xml2json": "^0.12.0"
+  }
+}
