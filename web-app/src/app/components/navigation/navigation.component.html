@@ -9,9 +9,13 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink='home' routerLinkActive='active'>Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="!authService.isLoggedIn">
                 <a class="nav-link" routerLink='sign-in' routerLinkActive='active'>Sign In</a>
             </li>
+            <li class="nav-item" *ngIf="authService.isLoggedIn">
+              <a class="nav-link" routerLink='user/dashboard' routerLinkActive='active'>Dashboard</a>
+            </li>
+            <div class="btn btn-outline-danger rounded px-4" (click)="authService.logout()" *ngIf="authService.isLoggedIn">Logout</div>
         </ul>
       </div>
     </div>

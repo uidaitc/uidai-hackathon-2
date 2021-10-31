@@ -5,10 +5,10 @@
             <h5 class="bg-primary text-light text-center py-3">Sign-In</h5>
             <form [formGroup]="SigninForm" (ngSubmit)="onSubmit()" class="mx-3 my-2">
                 <div class="form-group mt-3">
-                    <label for="aadhar" class="fw-bold mb-2">Aadhar No:</label>
-                    <input type="text" class="form-control mt-1" id="aadhar" formControlName = "aadhar" [ngClass]="{'is-invalid':!SigninForm.get('aadhar')?.valid && (formSubmitted || SigninForm.get('aadhar')?.touched)}" [readonly]="showOTPFeild">
+                    <label for="uid" class="fw-bold mb-2">Aadhar No:</label>
+                    <input type="text" class="form-control mt-1" id="uid" formControlName = "uid" [ngClass]="{'is-invalid':!SigninForm.get('uid')?.valid && (formSubmitted || SigninForm.get('uid')?.touched)}" [readonly]="showOTPFeild">
                 </div>
-                <div *ngIf="!SigninForm.get('aadhar')?.valid && (formSubmitted || SigninForm.get('aadhar')?.touched)" class="feedback mt-2">
+                <div *ngIf="!SigninForm.get('uid')?.valid && (formSubmitted || SigninForm.get('uid')?.touched) || this.inValidAadhar" class="feedback mt-2">
                     *Invalid Aadhar Number
                  </div>                 
                 <div class="text-center mt-3">
